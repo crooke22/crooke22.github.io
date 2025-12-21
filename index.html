@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love!</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --primary-pink: #ff8fa3;
+            --dark-pink: #ff4d6d;
+            --soft-bg: #fff5f7;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--soft-bg);
+            color: #444;
+            text-align: center;
+        }
+
+        header {
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, #ffb6c1, var(--soft-bg));
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        /* Memory Wall */
+        .memory-wall {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .memory-card {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* Surprise Styling */
+        .surprise-section {
+            margin: 50px 0;
+            padding: 40px;
+            background: white;
+            border: 3px dashed var(--primary-pink);
+            border-radius: 30px;
+        }
+
+        .btn-surprise {
+            padding: 18px 35px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: var(--dark-pink);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 8px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        /* This ensures the special photo is invisible at first */
+        #specialReveal {
+            display: none; 
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin-top: 30px;
+        }
+
+        .special-img {
+            width: 100%;
+            max-width: 450px;
+            border: 10px solid white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        footer { padding: 40px; color: #ffb6c1; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Happy Birthday, Chananchida(PeeMaiiii)! ❤️</h1>
+    </header>
+
+    <div class="container">
+        
+        <h2>📸 Our Best Moments</h2>
+        <div class="memory-wall">
+            <div class="memory-card"><img src="I_like_this_picture_alot.jpg"><p>I realllllyyyyy likeeeeee this Picccture a llllooott.</p></div>
+            <div class="memory-card"><img src="being_cute_together.png"><p>Our time being cute toggggeettheeer</p></div>
+            <div class="memory-card"><img src="focus_mode.jpg"><p>Yourrrr Focusss Modeee</p></div>
+        </div>
+
+        <div class="surprise-section">
+            <div id="buttonWrapper">
+                <h2>I have one more thing for you...</h2>
+                <button class="btn-surprise" onclick="revealMagic()">CLICK FOR THE SURPRISE 🎁</button>
+            </div>
+
+            <div id="specialReveal" style="display: none;">
+                <img src="surprise.jpg" alt="Special Photo" class="special-img">
+                <h2 style="color: var(--dark-pink); margin-top: 20px;">I Love You!</h2>
+                <p>Happppyyy Birthdayyy Pookkkiiiiee!!!! Even though we are not together right now, we will spend our time together in upcoming February. I will fill the time for you when I come to seee you. I wishes We will be like this forever, being cute togetherrrrr... I Loveeee You POOOOKKKIIIEE!!!!!</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function revealMagic() {
+            // 1. Get the elements
+            const revealArea = document.getElementById('specialReveal');
+            const buttonWrapper = document.getElementById('buttonWrapper');
+
+            // 2. Hide the button and show the surprise
+            buttonWrapper.style.display = 'none';
+            revealArea.style.display = 'block';
+            
+            // Trigger a tiny delay for the fade-in animation to look smooth
+            setTimeout(() => {
+                revealArea.style.opacity = '1';
+            }, 10);
+
+            // 3. Launch Confetti
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+    </script>
+</body>
+</html>
