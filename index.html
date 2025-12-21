@@ -68,9 +68,14 @@
             cursor: pointer;
             font-weight: bold;
             box-shadow: 0 8px 15px rgba(255, 77, 109, 0.3);
+            transition: 0.3s;
         }
 
-        /* This ensures the special photo is invisible at first */
+        .btn-surprise:hover {
+            transform: scale(1.05);
+            background: #ff3355;
+        }
+
         #specialReveal {
             display: none; 
             opacity: 0;
@@ -110,7 +115,7 @@
                 <button class="btn-surprise" onclick="revealMagic()">CLICK FOR THE SURPRISE 🎁</button>
             </div>
 
-            <div id="specialReveal" style="display: none;">
+            <div id="specialReveal">
                 <img src="surprise.jpg" alt="Special Photo" class="special-img">
                 <h2 style="color: var(--dark-pink); margin-top: 20px;">I Love You!</h2>
                 <p>Happppyyy Birthdayyy Pookkkiiiiee!!!! Even though we are not together right now, we will spend our time together in upcoming February. I will fill the time for you when I come to seee you. I wishes We will be like this forever, being cute togetherrrrr... I Loveeee You POOOOKKKIIIEE!!!!!</p>
@@ -119,22 +124,29 @@
 
     </div>
 
+    <audio id="birthdaySong">
+        <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-to-You.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         function revealMagic() {
-            // 1. Get the elements
+            // 1. Start the music immediately
+            const song = document.getElementById('birthdaySong');
+            song.play();
+
+            // 2. Get the UI elements
             const revealArea = document.getElementById('specialReveal');
             const buttonWrapper = document.getElementById('buttonWrapper');
 
-            // 2. Hide the button and show the surprise
+            // 3. Hide the button and show the surprise
             buttonWrapper.style.display = 'none';
             revealArea.style.display = 'block';
             
-            // Trigger a tiny delay for the fade-in animation to look smooth
             setTimeout(() => {
                 revealArea.style.opacity = '1';
             }, 10);
 
-            // 3. Launch Confetti
+            // 4. Launch Confetti
             confetti({
                 particleCount: 150,
                 spread: 70,
